@@ -1,0 +1,72 @@
+<!-- Task: Implement a bank account management system using JavaScript objects and functions. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANK ACCOUNT MANAGEMENT</title>
+</head>
+<body>
+<script>
+let account1 = {
+  accountNumber : 12092903490,
+  name: 'Vivek',
+  type: 'Simple Saving',
+  balance: 100000,
+  active: true,
+}
+let account2 = {
+  accountNumber : 120923208900,
+  name: 'Samuel',
+  type: 'Current',
+  balance: 300000,
+  active: true,
+}
+let account3 = {
+  accountNumber : 1209382692610,
+  name: 'Aslam',
+  type: 'Current',
+  balance: 150000,
+  active: true,
+}
+function BankAccount (accountNumber, name, type,balance,){
+    this.accountNumber = accountNumber;
+    this.name = name;
+    this.type = type;
+    this.balance = balance;
+    this.active = true;
+}
+BankAccount.prototype.deposit = function(amount){
+    this.balance+=amount;
+    console.log(`Deposited ${amount}. new Balance ${this.balance}`)
+   
+}
+BankAccount.prototype.withdraw = function(amount){
+    this.balance-=amount;
+    console.log(`Withdraw${amount}. new Balance ${this.balance}`)
+ 
+}
+ 
+function TotalBalance(accounts){
+    let Total = 0;
+    for(let key of accounts){
+        if(key.active) Total+=key.balance
+    }
+    return Total;
+}
+
+let VivekAccount = new BankAccount( 12092903490,'Vivek', 'Simple Saving',1000, true,)
+let SamuelAccount = new BankAccount( 120923208900,'Samuel','Current',3000, true,)
+let AslamAccount = new BankAccount( 1209382692610,'Aslam','Current', 1500, true,)
+
+let array = [VivekAccount,SamuelAccount,AslamAccount]
+
+console.log(TotalBalance(array))
+
+</script>
+    
+</body>
+
+</html>
